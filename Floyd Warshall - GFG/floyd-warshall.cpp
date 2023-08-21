@@ -9,23 +9,18 @@ using namespace std;
 
 class Solution {
   public:
-    void via(int n, vector<vector<int>>&matrix){
-        for (int i = 0; i < matrix.size(); i++){
-	        for (int j = 0; j < matrix.size(); j++){
-	           // if (i == n || j == n) break;
-	           // if (matrix[i][n] == 1e9 || matrix[n][j] == 1e9) break;
-	            if (matrix[i][j] > matrix[i][n] + matrix[n][j]) matrix[i][j] = matrix[i][n] + matrix[n][j];
-	        }
-	    }
-    }
 	void shortest_distance(vector<vector<int>>&matrix){
 	    for (int i = 0; i < matrix.size(); i++){
 	        for (int j = 0; j < matrix.size(); j++){
 	            if (matrix[i][j] == -1) matrix[i][j] = 1e9;
 	        }
 	    }
-	    for (int i = 0; i < matrix.size(); i++){
-	        via(i, matrix);
+	    for (int n = 0; n < matrix.size(); n++){
+	        for (int i = 0; i < matrix.size(); i++){
+	            for (int j = 0; j < matrix.size(); j++){
+	                if (matrix[i][j] > matrix[i][n] + matrix[n][j]) matrix[i][j] = matrix[i][n] + matrix[n][j];
+	            }
+	        }
 	    }
 	    for (int i = 0; i < matrix.size(); i++){
 	        for (int j = 0; j < matrix.size(); j++){
