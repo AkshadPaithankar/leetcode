@@ -48,11 +48,11 @@ class Solution {
                 }
             }
         }
-        unordered_set<int> st;
+        int count = 0;
         for (int i = 0; i <= n; i++){
-            st.insert(ds.findULP(i));
+            if (ds.findULP(i) == i) count++;
         }
-        return st.size() - 1;
+        return count-1;
     }
 };
 
